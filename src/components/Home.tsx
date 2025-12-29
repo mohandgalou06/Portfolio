@@ -9,11 +9,11 @@ const Home = () => {
        <div className="flex flex-col">
            <h1 className="text-5xl md:text-6xl
            font-bold text-center md:text-left mt-4 md:mt-0 "> Bonjour , <br /> je suis 
-            <span className="text-accent">Lucdev</span>
+            <span className="text-accent">Moumouh</span>
            </h1>
              <p className="my-4 text-md text-center md:text-left"> je suis un developpeur full stack <br /> 
-              avec 5 ans d'experience en utilisant React <br />
-              et Node.js 
+              je suis etudiant a l'universite d'evry en Liscence 3 <br />
+               
               contactez-moi si vous avez besoin de mes services</p>
               <p/>
              <a href="" className="btn btn-accent md:w-fit"> 

@@ -3,6 +3,7 @@
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/about";
+import Experiences from "./components/Experiences";
  
 export default function App() {
                                                                 
@@ -11,8 +12,11 @@ export default function App() {
     <div className="p-5 md:px-[15%]">
       <Navbar/>
        <Home/>
-       <About/>
     </div>
+     <About/>
+      <div className="p-5 md:px-[15%]">
+          <Experiences/>
+      </div> 
     </div>
  )
 }

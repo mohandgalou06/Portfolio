@@ -40,7 +40,9 @@ const About = () => {
          <div className="md: ml-4 space-y-4 ">
            { aboutSections.map((section) => (
 
-              <div key={section.id} className="">
+              <div key={section.id} 
+                 className=" flex flex-col md:flex-row items-center
+                 bg-base-100 p-5 rouded-xl md:w-96 shadow-xl">
                   <div className="mb-2 md:mb-0">
                     {section.icon} </div>
                   <div className="md:ml-4 text-center md:text-left ">
@@ -58,7 +60,7 @@ const About = () => {
           }
             </div>
 
-        <div className="">
+        <div className="md:h-screen flex justify-center item-center">
 
 
         </div>

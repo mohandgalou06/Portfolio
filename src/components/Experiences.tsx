@@ -1,160 +1,116 @@
 
-import React from 'react'
-import Title from './title'
 
+import Title from './title'
+import { useState } from "react" ;
 import imgCSS from "../assets/techno/css.png";
 import imgJS from "../assets/techno/js.png";
 import imgREACT from "../assets/techno/react.png";
 import imgHTML from "../assets/techno/html.png";
-import imgNEXT from "../assets/techno/next-js.webp";
-import imgNODE from "../assets/techno/node-js.png";
-import imgTYPE from "../assets/techno/typescript.svg";
+import imgC from "../assets/techno/c.svg";
+import imgJAVA from "../assets/techno/java.svg";
+import imgMYSQL from "../assets/techno/mysql.svg";
 import imgTAILWIND from "../assets/techno/tailwind.png";
-import imgPRISMA from "../assets/techno/prisma.webp";
+import imgPYTHON from "../assets/techno/python.svg";
 
- import google from "../assets/companies/google.png";
- import meta from "../assets/companies/meta.webp";
- import amazon from "../assets/companies/amazon.png"
-
-
+ 
+// ---------- DONNÉES DES COMPÉTENCES ----------
 const skills = [
-    { id: 1, name: "HTML", image: imgHTML },
-    { id: 2, name: "CSS", image: imgCSS },
-    { id: 3, name: "JavaScript", image: imgJS },
-    { id: 4, name: "React", image: imgREACT },
-    { id: 5, name: "Node.js", image: imgNODE },
-    { id: 6, name: "Tailwind CSS", image: imgTAILWIND },
-    { id: 7, name: "TypeScript", image: imgTYPE },
-    { id: 8, name: "Next.js", image: imgNEXT },
-    { id: 9, name: "Prisma", image: imgPRISMA },
+  { id: 1, name: "HTML", image: imgHTML },
+  { id: 2, name: "CSS", image: imgCSS },
+  { id: 3, name: "JavaScript", image: imgJS },
+  { id: 4, name: "React", image: imgREACT },
+  { id: 5, name: "java", image: imgJAVA },
+  { id: 6, name: "Tailwind CSS", image: imgTAILWIND },
+  { id: 7, name: "MySql", image: imgMYSQL },
+  { id: 8, name: "C", image: imgC },
+  { id: 9, name: "Python", image: imgPYTHON },
 ];
 
-
-  const experiences =  [
-
-  {
-      id:1 ,
-      role: "Softxare ",    
-      company: "Google",  
-      period:"Sep 2022 - present",
-      description: [
-        " developpement de nouvelles fonctionnalites pour google maps." ,
-        " optimisation des performances de l'application",  
-  ],
-      image : google 
-     },
-   {
-    id: 2 ,
-    role: "Fullstack Developer" ,   
-    company: "Meta",
-    period: "Jan 2021 - Aout 2022",
-    description: [
-     " Creation d'une "
-
-
-    ], 
-    image: meta, 
-   } ,
-    
-   {
-     id:3 ,
-     role:"Frontend Developer", 
-     company:"Amazon",
-     period:" Mai 2019 - Dec 2020",
-     description: [
-       "Developpement d'une interface utilisateur pour Amazon Web Services",
-       "Implemente des tests unitaires et E2E." ,
-         
-     ],
-    image: amazon,  
-}, 
-  
+// ⚠️ Les commentaires JSX ne fonctionnent PAS ici
+// → on utilise un commentaire TypeScript classique
+/*
+const experiences = [
+  ...
 ];
+*/
 
+// ---------- COMPOSANT ----------
+export default function Experiences() {
+  // État pour afficher / cacher le nom de la compétence
+  const [active, setActive] = useState<number | null>(null);
 
+  // Rayon du cercle
+  const radius = 180;
 
+  // Nombre total de compétences
+  const count = skills.length;
 
+  return (
+    <div id="Experiences" className='mb-70'>
+      <Title title="Experiences" />
 
+      <div className="flex justify-center items-center mt-10">
+        {/* Conteneur */}
+        <div className="flex justify-center items-center h-[300px]">
+          {/* Cercle en rotation */}
+          <div className="relative w-[250px] h-[250px] animate-spin-slow">
+            {skills.map((skill, index) => {
+              // Calcul de l’angle pour placer chaque icône
+              const angle = (360 / count) * index;
 
+              return (
+                <div
+                  key={skill.id}
+                  onClick={() =>
+                    setActive(active === skill.id ? null : skill.id)
+                  }
+                  className="absolute top-1/2 left-1/2 cursor-pointer text-center select-none"
+                  style={{
+                    transform: `
+                      rotate(${angle}deg)
+                      translate(${radius}px)
+                      rotate(-${angle}deg)
+                    `,
+                  }}
+                >
+                  {/* Icône */}
+                  <img
+                    src={skill.image}
+                    alt={skill.name}
+                    className="w-10 h-10"
+                  />
 
-
-
-
-
-
-
-
-
-
-
-
-const Experiences = (  ) => {
-   return (
-     <div>
-        <Title title="Experiences"/>
-        <div className="flex md:flex-row justify-center items-center"> 
-            <div className="flex flex-wrap gap-4 justify-center items-center 
-               md:w-2/3 mt-4 md:mt-0 " >   
-             
-             {
-               skills.map((skill) => (   
-                 <div  key={skill.id} className="flex justifiy-center items-center">
-                    <div className="w-24 h-24 p-2 rounded-full border-2 border-accent">
-                      <img src={skill.image} alt={skill.name} className="object-cover  rounded-full h-full w-full"/>
-                   </div>  
-                 <span className="mt-2 text-sm">{skill.name}</span> 
-                   
-                       
-                         
-                   
+                  {/* Nom affiché seulement au clic */}
+                  {active === skill.id && (
+                    <div className="mt-1 text-xs text-white bg-black/70 px-2 py-1 rounded">
+                      {skill.name}
+                    </div>
+                  )}
                 </div>
+              );
+            })}
+          </div>
 
-                     
-               ))}
-            </div>  
-            <div className='md:ml-4 flex flex-col space-y-4'>
-              {
-                experiences.map((experience) => (
-
-                  <div 
-                   key = {experience.id}
-                   className = "flex flex-col bg-base-200 p-5 rounded-xl shadow-lg"
-                  >
-                   <div className="flex items-center ">
-                     <img src={experience.image} 
-                      alt= {experience.company}
-                      className="object-cover h-10 w-10"
-                      />   
-                     <div className="ml-4">
-                       <h1> 
-                        {experience.role} , {experience.company} 
-                       </h1>
-                       <span className="text-sm">{experience.period}</span>
-                     </div>
-
-                   </div>
-                  <ul className="list-desc ml-16 mt-5">
-                      {experience.description.map((desc, index) => (
-                         <li key={index}>test</li>
-                        ))}
-                  </ul>
-
-
-                  </div>
-
-                )) 
-
-                   
-              }
-                   
-            </div>
-         </div>
+          {/* Animation CSS intégrée */}
+          <style>{`
+            .animate-spin-slow {
+              animation: spin 20s linear infinite;
+            }
+            @keyframes spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+          `}</style>
         </div>
-     
-   )
+      </div>
+    </div>
+  );
 }
 
-export default Experiences  
+
+
+
+  
 
 
 

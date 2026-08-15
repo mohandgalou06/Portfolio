@@ -1,8 +1,8 @@
 
 //import React from 'react'
 import Title from "./title" 
-import img from "../assets/img.jpg"
-import { CalendarSync, LetterText, Paintbrush } from "lucide-react";
+import img from "../assets/img4.jpg"
+import { BrainCircuit, CalendarSync, LetterText } from "lucide-react";
 
  const aboutSections = [
     {
@@ -18,17 +18,17 @@ import { CalendarSync, LetterText, Paintbrush } from "lucide-react";
         icon: <CalendarSync className="text-accent scale-150" />,
     },
     {
-        id: 3,
-        title: "Passionné par l'UI/UX",
-        description: "Créer des interfaces utilisateur attrayantes et fonctionnelles est ma priorité.",
-        icon: <Paintbrush className="text-accent scale-150" />,
-    },
+         id: 3,
+         title: "Passionné par l'intelligence artificielle",
+         description:"Je maîtrise plusieurs algorithmes d'intelligence artificielle, notamment BFS, DFS, Minimax et les algorithmes génétiques, pour résoudre des problèmes de recherche, de décision et d'optimisation.",
+         icon: <BrainCircuit className="text-accent scale-150" />,
+      },
 ];
 
 
 const About = () => {
    return (
-     <div className="bg-base-300 p-10 mb-10 md:mb-32">
+     <div className="bg-base-300 p-10 mb-10 md:mb-32 "id="About">
          <Title title="A propos"/>               
        <div className="md:h-screen flex justify-center">
        <div>
